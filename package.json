@@ -1,0 +1,32 @@
+{
+  "name": "cli-qa",
+  "version": "0.0.0",
+  "description": "Command-line Questions & Answers",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test"
+  },
+  "keywords": [
+    "io",
+    "cli",
+    "prompt",
+    "input",
+    "question",
+    "answer",
+    "qa",
+    "q&a"
+  ],
+  "repository": {
+    "url": "git@github.com:azer/cli-qa.git",
+    "type": "git"
+  },
+  "author": "azer",
+  "license": "BSD",
+  "dependencies": {
+    "left-pad": "0.0.4",
+    "read-cli-input": "1.0.1",
+    "serial-loop": "0.0.1",
+    "style-format": "0.0.0",
+    "variable-name": "0.0.2"
+  }
+}
