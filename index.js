@@ -48,6 +48,10 @@ function ask (question, options, callback) {
       answer = answer[0] == 'y';
     }
 
+    if (question.commaList) {
+      answer = commaList(answer);
+    }
+
     callback(answer);
   });
 }
@@ -70,6 +74,18 @@ function lines (question) {
   }
 
   return 1;
+}
+
+function commaList (input) {
+  return input
+    .trim()
+    .split(/\s*,\s*/)
+    .map(function (col) {
+      return col.trim();
+    })
+    .filter(function (col) {
+      return col && col.length;
+    });
 }
 
 function normalizeQuestion (question) {
