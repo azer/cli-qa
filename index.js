@@ -41,7 +41,7 @@ function ask (question, options, callback) {
 
   read(readOptions, function (answer) {
     if (!question.list) {
-      answer = answer[0];
+      answer = answer[0] || '';
     }
 
     if (question.bool) {
