@@ -5,6 +5,7 @@ var variable = require("variable-name");
 var leftpad = require("left-pad");
 
 module.exports = QA;
+module.exports.normalizeQuestion = normalizeQuestion;
 
 function QA (questions, options, callback) {
   if (arguments.length == 2) {
