@@ -1,9 +1,10 @@
 var read = require("read-cli-input");
 var loop = require("serial-loop");
-var format = require("style-format");
+var style = require("style-format");
 var variable = require("variable-name");
 var leftpad = require("left-pad");
 var validate = require("validate-value");
+var format = require("format-text");
 
 module.exports = QA;
 module.exports.normalizeQuestion = normalizeQuestion;
@@ -19,6 +20,7 @@ function QA (questions, options, callback) {
 
   questions = questions.map(normalizeQuestion);
   var answers = {};
+  options.answers = answers;
 
   loop(questions.length, each, function () {
     callback(answers);
@@ -33,7 +35,7 @@ function QA (questions, options, callback) {
 }
 
 function ask (question, options, callback) {
-  options.stdout.write(formatQuestion(question));
+  options.stdout.write(format(styleQuestion(question), options.answers));
 
   var readOptions = {
     stdin: options.stdin,
@@ -56,7 +58,7 @@ function ask (question, options, callback) {
 
     var err;
     if (question.validate && (err = validate(answer, question.validate))) {
-      options.stdout.write(formatError(err));
+      options.stdout.write(styleError(err));
       return ask(question, options, callback);
     }
 
@@ -72,7 +74,7 @@ function prefixFn (question, options) {
   if (!question.list) return;
 
   return function (line) {
-    options.stdout.write(formatPrefix(line, options));
+    options.stdout.write(stylePrefix(line, options));
   };
 }
 
@@ -106,24 +108,24 @@ function normalizeQuestion (question) {
   }
 
   if (!question.key) {
-    question.key = variable(clearFormat(question.title));
+    question.key = variable(clearFormatting(question.title));
   }
 
   return question;
 }
 
-function formatQuestion (question) {
+function styleQuestion (question) {
   return '  '
-    + format(question.title)
+    + style(question.title)
     + (question.list ? '\n' : ' ');
 }
 
-function formatPrefix (line, options) {
+function stylePrefix (line, options) {
   if (options.prefix) return options.prefix(line);
   return '    ' + (line + 1) + '. ';
 }
 
-function clearFormat (text) {
+function clearFormatting (text) {
   return text.replace(/\{\w+\}/g, '');
 }
 
@@ -131,6 +133,6 @@ function isEmpty (str) {
   return !str && (!str.trim || !str.trim());
 }
 
-function formatError (err) {
-  return format('\n  {red}{bold}Error: ' + err.message + '{reset}\n');
+function styleError (err) {
+  return style('\n  {red}{bold}Error: ' + err.message + '{reset}\n');
 }

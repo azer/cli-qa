@@ -23,6 +23,7 @@
   "author": "azer",
   "license": "BSD",
   "dependencies": {
+    "format-text": "0.0.3",
     "left-pad": "0.0.4",
     "read-cli-input": "1.0.1",
     "serial-loop": "0.0.1",
