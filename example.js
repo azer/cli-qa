@@ -2,6 +2,7 @@ var QA = require('./');
 
 var questions = [
   "{bold}Name:{reset}",
+  { title: "Username:", default: process.env.USER },
   { title: "{bold}Favorite foods:{reset}", list: 3 },
   { key: "books", title: "{bold}Favorite books {grey}(Type as much as you want!){reset}{bold}:{reset}", list: true },
   "{bold}Additional Thoughts{reset}",

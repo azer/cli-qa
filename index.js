@@ -53,6 +53,10 @@ function ask (question, options, callback) {
       answer = commaList(answer);
     }
 
+    if (question.default && !answer && (!answer.trim || !answer.trim())) {
+      answer = question.default;
+    }
+
     callback(answer);
   });
 }
