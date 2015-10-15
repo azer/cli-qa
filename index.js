@@ -3,6 +3,7 @@ var loop = require("serial-loop");
 var format = require("style-format");
 var variable = require("variable-name");
 var leftpad = require("left-pad");
+var validate = require("validate-value");
 
 module.exports = QA;
 module.exports.normalizeQuestion = normalizeQuestion;
@@ -53,7 +54,13 @@ function ask (question, options, callback) {
       answer = commaList(answer);
     }
 
-    if (question.default && !answer && (!answer.trim || !answer.trim())) {
+    var err;
+    if (question.validate && (err = validate(answer, question.validate))) {
+      options.stdout.write(formatError(err));
+      return ask(question, options, callback);
+    }
+
+    if (question.default && isEmpty(answer)) {
       answer = question.default;
     }
 
@@ -118,4 +125,12 @@ function formatPrefix (line, options) {
 
 function clearFormat (text) {
   return text.replace(/\{\w+\}/g, '');
+}
+
+function isEmpty (str) {
+  return !str && (!str.trim || !str.trim());
+}
+
+function formatError (err) {
+  return format('\n  {red}{bold}Error: ' + err.message + '{reset}\n');
 }

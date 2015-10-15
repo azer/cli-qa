@@ -27,6 +27,7 @@
     "read-cli-input": "1.0.1",
     "serial-loop": "0.0.1",
     "style-format": "0.0.0",
+    "validate-value": "0.0.0",
     "variable-name": "0.0.2"
   }
 }
