@@ -16,11 +16,13 @@ $ npm install cli-qa
 var QA = require('cli-qa')
 
 var questions = [
-  { key: "name", title: "Hey! What's your name?" },
-  { key: "foods", title: "What are your 3 most favorite foods?", list: 3 },
-  { title: "Favorite books?", description: "Type as much as you want!", list: true }, // unlimited list input
-  "Thoughts?",
-  { title: "That's all?", description: "Yes/No", bool: true }
+  "{bold}Name:{reset}",
+  { title: "Username:", default: process.env.USER },
+  { title: "{bold}Favorite foods:{reset}", list: 3 },
+  { key: "books", title: "{bold}Favorite books {grey}(Type as much as you want!){reset}{bold}:{reset}", list: true },
+  "{bold}Additional Thoughts{reset}",
+  { title: "{yellow}Favorite {green}Fruits{reset}:", commaList: true },
+  { key: 'thatsAll', title: "{yellow}{bold}That's all {grey}(yes/no) {yellow}?{reset}", bool: true },
 ];
 
 QA(questions, function (answers) {
