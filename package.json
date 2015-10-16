@@ -23,12 +23,17 @@
   "author": "azer",
   "license": "BSD",
   "dependencies": {
+    "comma-list": "0.0.0",
     "format-text": "0.0.3",
-    "left-pad": "0.0.4",
+    "mix-objects": "0.0.3",
+    "new-struct": "^0.1.1",
     "read-cli-input": "1.0.1",
     "serial-loop": "0.0.1",
     "style-format": "0.0.0",
     "validate-value": "0.0.0",
     "variable-name": "0.0.2"
+  },
+  "devDependencies": {
+    "prova": "^2.1.2"
   }
 }
