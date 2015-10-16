@@ -1,6 +1,6 @@
 {
   "name": "cli-qa",
-  "version": "1.0.0",
+  "version": "2.0.1",
   "description": "Command-line Questions & Answers",
   "main": "index.js",
   "scripts": {
@@ -23,7 +23,7 @@
   "author": "azer",
   "license": "BSD",
   "dependencies": {
-    "comma-list": "0.0.0",
+    "comma-list": "0.0.1",
     "format-text": "0.0.3",
     "mix-objects": "0.0.3",
     "new-struct": "^0.1.1",
