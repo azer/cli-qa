@@ -13,19 +13,18 @@ $ npm install cli-qa
 ## Usage
 
 ```js
-var QA = require('cli-qa')
+var NewQA = require('cli-qa')
 
-var questions = [
-  "{bold}Name:{reset}",
-  { title: "Username:", default: process.env.USER },
-  { key: "email", title: "E-Mail:", validate: { email: true } },
-  { title: "{bold}Favorite foods:{reset}", list: 3 },
-  { key: "books", title: "{bold}Favorite books {grey}(Type as much as you want!){reset}{bold}:{reset}", list: true },
-  { title: "{yellow}Favorite {green}Fruits{reset}:", commaList: true },
-  { key: 'thatsAll', title: "{yellow}{bold}That's all {grey}(yes/no) {yellow}?{reset}", bool: true },
-];
+var QA = NewQA()
+QA.ask("{white}Name:{reset}")
+QA.ask({ title: "Username:", default: process.env.USER })
+QA.ask({ key: "email", title: "E-Mail:", expect: { email: true } })
+QA.ask({ title: "{red}Favorite foods:{reset}", list: 3 })
+QA.ask({ key: "books", title: "{white}Favorite books:{reset}", list: true })
+QA.ask({ title: "{yellow}Favorite {green}Fruits{reset}:", commaList: true })
+QA.ask({ key: 'thatsAll', title: "{yellow}That's all, {name}? (yes/no){reset}", yesno: true })
 
-QA(questions, function (answers) {
+QA.start(function (answers) {
   console.log(answers)
   // => {
   //      "name": "Azer",
@@ -56,8 +55,8 @@ The list of available options for each question:
 
 * key: *The key that will be used in the answers object. If not specified, [it'll be auto-generated](http://github.com/azer/variable-name).*
 * title: *Title of the question. [styling](http://github.com/azer/style-format) accepted.*
-* list: *Specify "true" if a numerical list is expected as an answer.*
+* list: *If a numeric value is passed, user will be prompted to enter a list with expected number of lines. If true passed, the list input won't be limited.*
 * commaList: *Specify "true" if a comma-separated list is expected as an answer.*
-* bool: *Yes/no question? true/false*
+* yesno: *Yes/no question? true/false*
 * default: *Default value if answer is empty.*
-* validate: *Specify [requirements](https://github.com/azer/validate-value#reference) for [validating](https://github.com/azer/validate-value) the user input.*
+* expect: *Specify [requirements](https://github.com/azer/validate-value#reference) for [validating](https://github.com/azer/validate-value) the user input.*
