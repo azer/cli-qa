@@ -1,5 +1,6 @@
 var test = require("prova");
 var NewQA = require("../");
+var NewQuestion = require('../lib/question');
 
 test('Creating new QA', function (t) {
   var defaults = NewQA();
@@ -95,4 +96,16 @@ test('Mixing contexts', function (t) {
     user: 'azer',
     passwd: '123'
   });
+});
+
+test('Using NewQuestion with custom struct', function (t) {
+  var QA = { foo: 1 };
+  var options = { title: 'yolo' };
+  NewQuestion.call({ struct: custom }, QA, options);
+
+  function custom (ctx) {
+    t.equal(ctx.QA, QA);
+    t.equal(ctx.key, 'yolo');
+    t.end();
+  }
 });
