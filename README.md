@@ -38,14 +38,6 @@ QA.start(function (answers) {
 })
 ```
 
-### Styling
-
-Title and description fields can be styled with [style-format](http://github.com/azer/style-format) interface. Here is an example;
-
-```js
-QA.ask({ title: "{green}Yes{reset}/{red}No{reset}?", bool: true })
-```
-
 ### Reference
 
 The list of available options for each question:
