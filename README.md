@@ -42,10 +42,26 @@ QA.start(function (answers) {
 
 The list of available options for each question:
 
-* key: *The key that will be used in the answers object. If not specified, [it'll be auto-generated](http://github.com/azer/variable-name).*
-* title: *Title of the question. [styling](http://github.com/azer/style-format) accepted.*
-* list: *If a numeric value is passed, user will be prompted to enter a list with expected number of lines. If true passed, the list input won't be limited.*
-* commaList: *Specify "true" if a comma-separated list is expected as an answer.*
-* yesno: *Yes/no question? true/false*
-* default: *Default value if answer is empty.*
-* expect: *Specify [requirements](https://github.com/azer/validate-value#reference) for [validating](https://github.com/azer/validate-value) the user input.*
+##### key
+The key that will be used in the answers object. If not specified, [it'll be auto-generated](http://github.com/azer/variable-name)
+
+##### title
+Title of the question. [styling](http://github.com/azer/style-format) accepted.
+
+##### list
+If a numeric value is passed, user will be prompted to enter a list with expected number of lines. If true passed, the list input won't be limited.
+
+##### commaList
+Specify "true" if a comma-separated list is expected as an answer
+
+##### yesno
+Yes/no question? true/false
+
+##### default
+Default value if answer is empty.
+
+##### expect
+Specify [requirements](https://github.com/azer/validate-value#reference) for [validating](https://github.com/azer/validate-value) the user input.
+
+##### validate
+Async validation function. See tests for example.

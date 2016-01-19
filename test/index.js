@@ -109,3 +109,15 @@ test('Using NewQuestion with custom struct', function (t) {
     t.end();
   }
 });
+
+test('Async validation', function (t) {
+  var qa = NewQA();
+  qa.ask({
+    title: 'your name',
+    validate: function (callback) {
+      t.end();
+    }
+  });
+
+  qa.questions[0].validate();
+});
