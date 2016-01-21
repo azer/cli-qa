@@ -1,6 +1,6 @@
 {
   "name": "cli-qa",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "Command-line Questions & Answers",
   "main": "index.js",
   "scripts": {
