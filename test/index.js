@@ -114,10 +114,11 @@ test('Async validation', function (t) {
   var qa = NewQA();
   qa.ask({
     title: 'your name',
-    validate: function (callback) {
-      t.end();
+    validate: function (answer, callback) {
+      t.equal(answer, 1);
+      callback();
     }
   });
 
-  qa.questions[0].validate();
+  qa.questions[0].validate(1, t.end);
 });
