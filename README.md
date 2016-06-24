@@ -1,4 +1,4 @@
-## cli-qa
+## Q&A
 
 Command-line Questions & Answers. Supports color formatting, lists, yes/no confirmations.
 
@@ -7,13 +7,13 @@ Command-line Questions & Answers. Supports color formatting, lists, yes/no confi
 ## Install
 
 ```bash
-$ npm install cli-qa
+$ npm install azer/qa
 ```
 
 ## Usage
 
 ```js
-var NewQA = require('cli-qa')
+var NewQA = require('qa')
 
 var QA = NewQA()
 QA.ask("{white}Name:{reset}")
