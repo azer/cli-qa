@@ -1,4 +1,4 @@
-## Q&A
+## CLI Q&A
 
 Command-line Questions & Answers. Supports color formatting, lists, yes/no confirmations.
 
